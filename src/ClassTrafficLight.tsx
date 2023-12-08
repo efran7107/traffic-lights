@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
-export class ClassTrafficLight extends Component {
-  lights: Array<string> = ["black", "green", "yellow", "red"];
+type Color = "red" | "yellow" | "green" | "black";
 
+type State = {
+  light: number;
+};
+
+export class ClassTrafficLight extends Component<Record<never, never>, State> {
   state = {
     light: 1,
   };
@@ -20,17 +24,17 @@ export class ClassTrafficLight extends Component {
           {/* Background color can be black | yellow | red | green */}
           <div
             className={`circle ${
-              this.state.light === 3 ? this.lights[3] : this.lights[0]
+              (this.state.light === 3 ? "red" : "black") satisfies Color
             }`}
           ></div>
           <div
             className={`circle ${
-              this.state.light === 2 ? this.lights[2] : this.lights[0]
+              (this.state.light === 2 ? "yellow" : "black") satisfies Color
             }`}
           ></div>
           <div
             className={`circle ${
-              this.state.light === 1 ? this.lights[1] : this.lights[0]
+              (this.state.light === 1 ? "green" : "black") satisfies Color
             }`}
           ></div>
         </div>
